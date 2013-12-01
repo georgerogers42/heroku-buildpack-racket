@@ -21,7 +21,7 @@ if [ ! -e $CACHE_DIR ]; then
   cd $CACHE_DIR
 else
   cd $CACHE_DIR
-  rm racket
+  rm -rf racket
 fi
 curl -L $RACKET_URL > racket-installer
 chmod u+x racket-installer
