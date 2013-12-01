@@ -12,18 +12,6 @@ make_tempdir()
 {
   dir=$(mktemp -t -u node-$1-XXXXXXX)
   rm -rf $dir
-  mkdir -p $dir
-  echo $dir
-}
-
-get_racket() {
-  dir=$1
-  cd $dir
-  git clone $RACKET_REPO 1>&2
-  cd racket
-  git reset 'v5.3.6'
-  echo `pwd`
-}
 
 build_racket() {
   dir=$1
@@ -43,7 +31,7 @@ echo "-----> Building Racket Runtime Environment"
 
 RACKET_DIR=$(build_racket $(get_racket $(make_tempdir racket)))
 
-if [ ! -d $RACKET_DIR ] then
+if [ ! -d $RACKET_DIR ]; then
   echo "Fail" | indent
   exit 1
 fi
