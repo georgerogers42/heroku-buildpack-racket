@@ -25,8 +25,9 @@ no
 no
 options
 RACKET_DIR=$CACHE_DIR/racket
+cp -r $RACKET_DIR /app
 
-echo "-----> Creating racketapp From heroku-setup.mkt"
+echo "-----> Creating racketapp From heroku-setup.rkt"
 cd $RACKET_DIR
 cd bin
-./raco exe -o $BUILD_DIR/racketapp $BUILD_DIR/heroku-setup.rkt
+./raco distribute /app $BUILD_DIR/heroku-setup.rkt
