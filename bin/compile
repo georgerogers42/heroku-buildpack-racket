@@ -31,4 +31,4 @@ cp -r $RACKET_DIR /app
 echo "-----> Creating racketapp From heroku-setup.rkt"
 cd $BUILD_DIR
 $RACKET_DIR/bin/raco exe heroku-setup.rkt
-$RACKET_DIR/bin/raco distribute run $BUILD_DIR/heroku-setup
+$RACKET_DIR/bin/raco distribute run heroku-setup
