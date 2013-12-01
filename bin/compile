@@ -24,11 +24,7 @@ make_tempdir()
 
 build_racket() {
   dir=$1
-  cd $dir/src
-  rm -rf build
-  mkdir build
-  cd build
-  ../configure --prefix=$BUILD_DIR 1>&2
+  cd $dir
   make $MAKEOPTS 1>&2 && make $MAKEOPTS install 1>&2 && echo $BUILD_DIR
 }
 
