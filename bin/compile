@@ -21,6 +21,7 @@ get_racket() {
   cd $dir
   git clone $RACKET_REPO 1>&2
   cd racket
+  git reset 'v5.3.6'
   echo `pwd`
 }
 
