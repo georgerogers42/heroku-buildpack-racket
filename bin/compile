@@ -8,6 +8,14 @@ RACKET_DIR=
 
 MAKEOPTS=-j3
 
+get_racket() {
+  dir=$1
+  cd $dir
+  git clone $RACKET_REPO 1>&2
+  cd racket
+  echo `pwd`
+}
+
 make_tempdir()
 {
   dir=$(mktemp -t -u node-$1-XXXXXXX)
