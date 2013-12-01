@@ -5,6 +5,7 @@ CACHE_DIR=$2
 
 RACKET_REPO=https://github.com/plt/racket.git
 RACKET_DIR=
+RACKET_VERSION=v5.3.6
 
 MAKEOPTS=-j3
 
@@ -12,6 +13,7 @@ get_racket() {
   dir=$1
   cd $dir
   git clone $RACKET_REPO 1>&2
+  git reset $RACKET_VERSION
   cd racket
   echo `pwd`
 }
