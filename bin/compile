@@ -11,11 +11,14 @@ MAKEOPTS=-j3
 
 get_racket() {
   dir=$1
-  cd $dir
-  git clone $RACKET_REPO 1>&2
-  git reset $RACKET_VERSION
-  cd racket
-  echo `pwd`
+  ver=$(cat $CACHE_DIR/racket/version)
+  if [ $ver -ne $RACKET_VERSION ]; then
+    cd $dir
+    git clone $RACKET_REPO 1>&2
+    git reset $RACKET_VERSION
+    cd racket
+  fi
+  echo $(pwd)
 }
 
 make_tempdir()
@@ -27,7 +30,9 @@ make_tempdir()
 build_racket() {
   dir=$1
   cd $dir
-  make $MAKEOPTS 1>&2 && make $MAKEOPTS install 1>&2 && echo $BUILD_DIR
+  make $MAKEOPTS 1>&2 && make $MAKEOPTS install 1>&2
+  mv $BUILD_DIR/racket $CACHE_DIR
+  echo $CACHE_DIR
 }
 
 indent() {
