@@ -16,11 +16,15 @@ indent() {
 
 echo "-----> Building Racket Runtime Environment"
 
-mkdir $CACHE_DIR
-cd $CACHE_DIR
+if [ ! -e $CACHE_DIR ]
+  mkdir $CACHE_DIR
+  cd $CACHE_DIR
+else
+  cd $CACHE_DIR
+  rm racket
+fi
 curl -L $RACKET_URL > racket-installer
 chmod u+x racket-installer
-rm racket
 ./racket-installer <<options
 no
 4
