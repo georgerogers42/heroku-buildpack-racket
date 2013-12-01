@@ -28,7 +28,7 @@ chmod u+x racket-installer
 ./racket-installer <<options
 no
 4
-no
+
 options
 RACKET_DIR=$CACHE_DIR/racket
 
