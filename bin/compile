@@ -16,7 +16,7 @@ indent() {
 
 echo "-----> Building Racket Runtime Environment"
 
-if [ ! -e $CACHE_DIR ]
+if [ ! -e $CACHE_DIR ]; then
   mkdir $CACHE_DIR
   cd $CACHE_DIR
 else
