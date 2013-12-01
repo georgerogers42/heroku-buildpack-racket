@@ -25,11 +25,6 @@ no
 options
 RACKET_DIR=$CACHE_DIR/racket
 
-if [ ! -d $RACKET_DIR ]; then
-  echo "Fail" | indent
-  exit 1
-fi
-
 echo "-----> Creating racketapp From heroku-setup.mkt"
 cd $RACKET_DIR
 cd bin
