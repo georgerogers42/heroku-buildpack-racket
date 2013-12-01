@@ -23,6 +23,7 @@ chmod u+x racket-installer
 no
 4
 no
+yes
 options
 RACKET_DIR=$CACHE_DIR/racket
 cp -r $RACKET_DIR /app
@@ -30,4 +31,4 @@ cp -r $RACKET_DIR /app
 echo "-----> Creating racketapp From heroku-setup.rkt"
 cd $BUILD_DIR
 $RACKET_DIR/bin/raco exe heroku-setup.rkt
-./raco distribute run $BUILD_DIR/heroku-setup
+$RACKET_DIR/bin/raco distribute run $BUILD_DIR/heroku-setup
