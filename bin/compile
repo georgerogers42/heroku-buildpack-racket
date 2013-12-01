@@ -12,6 +12,7 @@ make_tempdir()
 {
   dir=$(mktemp -t -u node-$1-XXXXXXX)
   rm -rf $dir
+}
 
 build_racket() {
   dir=$1
