@@ -15,6 +15,7 @@ indent() {
 
 echo "-----> Building Racket Runtime Environment"
 
+mkdir $CACHE_DIR
 cd $CACHE_DIR
 curl -L $RACKET_URL > racket-installer
 chmod u+x racket-installer
