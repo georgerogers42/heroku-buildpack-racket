@@ -50,4 +50,4 @@ fi
 echo "-----> Creating racketapp From heroku-setup.mkt"
 cd $RACKET_DIR
 cd bin
-raco exe -o $BUILD_DIR/racketapp $BUILD_DIR/heroku-setup.mkt
+raco exe -o $BUILD_DIR/racketapp $BUILD_DIR/heroku-setup.rkt
