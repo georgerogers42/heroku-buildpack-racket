@@ -1,4 +1,5 @@
 #! /bin/sh
+set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -19,14 +20,13 @@ mkdir $CACHE_DIR
 cd $CACHE_DIR
 curl -L $RACKET_URL > racket-installer
 chmod u+x racket-installer
+rm racket
 ./racket-installer <<options
 no
 4
 no
-yes
 options
 RACKET_DIR=$CACHE_DIR/racket
-cp -r $RACKET_DIR /app
 
 echo "-----> Creating racketapp From heroku-setup.rkt"
 cd $BUILD_DIR
