@@ -3,37 +3,11 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-RACKET_REPO=https://github.com/plt/racket.git
-RACKET_DIR=
+RACKET_URL=http://download.racket-lang.org/installers/5.3.6/racket/racket-5.3.6-bin-x86_64-linux-debian-squeeze.sh
 RACKET_VERSION=v5.3.6
 
 MAKEOPTS=-j3
 
-get_racket() {
-  dir=$1
-  ver=$(cat $CACHE_DIR/racket/version)
-  if [ $ver -ne $RACKET_VERSION ]; then
-    cd $dir
-    git clone $RACKET_REPO 1>&2
-    git reset $RACKET_VERSION
-    cd racket
-  fi
-  echo $(pwd)
-}
-
-make_tempdir()
-{
-  dir=$(mktemp -t -u node-$1-XXXXXXX)
-  rm -rf $dir
-}
-
-build_racket() {
-  dir=$1
-  cd $dir
-  make $MAKEOPTS 1>&2 && make $MAKEOPTS install 1>&2
-  mv $BUILD_DIR/racket $CACHE_DIR
-  echo $CACHE_DIR
-}
 
 indent() {
   sed -u 's/^/       /'
@@ -41,7 +15,14 @@ indent() {
 
 echo "-----> Building Racket Runtime Environment"
 
-RACKET_DIR=$(build_racket $(get_racket $(make_tempdir racket)))
+cd $CACHE_DIR
+curl -L $RACKET_URL > racket-installer
+chmod u+x racket-installer
+./racket-installer <<options
+no
+4
+options
+RACKET_DIR=$CACHE_DIR/racket
 
 if [ ! -d $RACKET_DIR ]; then
   echo "Fail" | indent
