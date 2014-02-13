@@ -4,7 +4,7 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-RACKET_URL=http://download.racket-lang.org/installers/5.93/racket-5.93-x86_64-linux-ubuntu-quantal.sh
+RACKET_URL=http://download.racket-lang.org/installers/5.3.6/racket/racket-5.3.6-bin-x86_64-linux-debian-squeeze.sh
 RACKET_VERSION=v5.93
 
 indent() {
