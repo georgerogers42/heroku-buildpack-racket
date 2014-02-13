@@ -4,11 +4,8 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-RACKET_URL=http://download.racket-lang.org/installers/5.3.6/racket/racket-5.3.6-bin-x86_64-linux-debian-squeeze.sh
-RACKET_VERSION=v5.3.6
-
-MAKEOPTS=-j3
-
+RACKET_URL=http://download.racket-lang.org/installers/5.93/racket-5.93-x86_64-linux-ubuntu-quantal.sh
+RACKET_VERSION=v5.93
 
 indent() {
   sed -u 's/^/       /'
@@ -32,7 +29,7 @@ no
 options
 RACKET_DIR=$CACHE_DIR/racket
 
-echo "-----> Creating racketapp From heroku-setup.rkt"
+echo "-----> Creating racket exe From heroku-setup.rkt"
 cd $BUILD_DIR
 $RACKET_DIR/bin/raco exe heroku-setup.rkt
 $RACKET_DIR/bin/raco distribute run heroku-setup
