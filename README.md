@@ -14,7 +14,7 @@ Example usage:
     $ ls
     Procfile heroku-setup.rkt
 
-    $ heroku create --stack cedar --buildpack http://github.com/onixie/heroku-buildpack-racket.git
+    $ heroku create --stack cedar --buildpack http://github.com/georgerogers42/heroku-buildpack-racket.git
 
     $ git push heroku master
     ...
