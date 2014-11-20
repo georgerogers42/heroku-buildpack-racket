@@ -5,7 +5,8 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 RACKET_URL="http://mirror.racket-lang.org/installers/6.1.1/racket-6.1.1-src.tgz"
-RACKET_VERSION=1
+VERSION=3
+RACKET_VERSION=6.1.1
 RACKET_DIR=$CACHE_DIR/racket
 
 indent() {
@@ -15,7 +16,7 @@ indent() {
 echo "-----> Building Racket Runtime Environment"
 touch $CACHE_DIR/version
 INSTALLED_VERSION=2
-if [ ! $INSTALLED_VERSION -eq $RACKET_VERSION ]; then
+if [ ! $INSTALLED_VERSION -eq $VERSION ]; then
 		rm -rvf $CACHE_DIR
 		mkdir $CACHE_DIR
 		curl -L $RACKET_URL | tar xzv
@@ -24,7 +25,7 @@ if [ ! $INSTALLED_VERSION -eq $RACKET_VERSION ]; then
 		./configure --prefix=$RACKET_DIR
 		make
 		make install
-		echo $RACKET_VERSION > $CACHE_DIR/version
+		echo $VERSION > $CACHE_DIR/version
 fi
 
 echo "-----> Creating racket exe From heroku-setup.rkt"
