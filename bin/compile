@@ -16,6 +16,7 @@ echo "-----> Building Racket Runtime Environment"
 touch $CACHE_DIR/version
 INSTALLED_VERSION=2
 if [ ! $INSTALLED_VERSION -eq $RACKET_VERSION ]; then
+		rm -rvf $CACHE_DIR
 		mkdir $CACHE_DIR
 		curl -L $RACKET_URL | tar xzv
 		mkdir $RACKET_DIR
