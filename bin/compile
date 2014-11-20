@@ -6,6 +6,7 @@ CACHE_DIR=$2
 
 RACKET_URL="http://mirror.racket-lang.org/installers/6.1.1/racket-6.1.1-src.tgz"
 RACKET_VERSION=6.1.1
+RACKET_DIR=$CACHE_DIR/racket
 
 indent() {
   sed -u 's/^/       /'
@@ -13,19 +14,14 @@ indent() {
 
 echo "-----> Building Racket Runtime Environment"
 if [ ! -e $CACHE_DIR ]; then
-  mkdir $CACHE_DIR
-  cd $CACHE_DIR
-else
-  cd $CACHE_DIR
-  rm -rf racket
+		mkdir $CACHE_DIR
+		curl -L $RACKET_URL | tar xzv
+		mkdir $RACKET_DIR
+		cd racket-$RACKET_VERSION/src
+		./configure --prefix=$RACKET_DIR
+		make
+		make install
 fi
-curl -L $RACKET_URL | tar xzv
-RACKET_DIR=$CACHE_DIR/racket
-mkdir $RACKET_DIR
-cd racket-$RACKET_VERSION/src
-./configure --prefix=$RACKET_DIR
-make
-make install
 
 echo "-----> Creating racket exe From heroku-setup.rkt"
 cd $BUILD_DIR
