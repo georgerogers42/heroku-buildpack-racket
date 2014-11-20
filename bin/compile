@@ -25,6 +25,7 @@ RACKET_DIR=$CACHE_DIR/racket
 mkdir $RACKET_DIR
 cd racket-$RACKET_VERSION/src
 ./configure --prefix=$RACKET_DIR
+make
 make install
 
 echo "-----> Creating racket exe From heroku-setup.rkt"
