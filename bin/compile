@@ -23,6 +23,7 @@ if [[ ! $INSTALLED_VERSION = $RACKET_VERSION ]]; then
 		./configure --prefix=$RACKET_DIR
 		make
 		make install
+		echo $RACKET_VERSION > $CACHE_DIR/version
 fi
 
 echo "-----> Creating racket exe From heroku-setup.rkt"
