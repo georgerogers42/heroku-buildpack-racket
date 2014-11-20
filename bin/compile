@@ -4,7 +4,7 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-RACKET_URL="http://download.racket-lang.org/installers/5.3.6/racket/racket-5.3.6-bin-x86_64-linux-debian-squeeze.sh"
+RACKET_URL="http://mirror.racket-lang.org/installers/6.1.1/racket-6.1.1-src.tgz"
 RACKET_VERSION=6.1.1
 
 indent() {
@@ -20,14 +20,11 @@ else
   cd $CACHE_DIR
   rm -rf racket
 fi
-curl -L $RACKET_URL > racket-installer
-chmod u+x racket-installer
-./racket-installer <<options
-no
-4
-
-options
+curl -L $RACKET_URL | tar xzv
 RACKET_DIR=$CACHE_DIR/racket
+cd racket-$RACKET_VERSION/src
+./configure --prefix $RACKET_DIR
+make install
 
 echo "-----> Creating racket exe From heroku-setup.rkt"
 cd $BUILD_DIR
