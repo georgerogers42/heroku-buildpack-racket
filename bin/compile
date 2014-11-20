@@ -23,7 +23,7 @@ fi
 curl -L $RACKET_URL | tar xzv
 RACKET_DIR=$CACHE_DIR/racket
 cd racket-$RACKET_VERSION/src
-./configure --prefix $RACKET_DIR
+./configure --prefix=$RACKET_DIR
 make install
 
 echo "-----> Creating racket exe From heroku-setup.rkt"
