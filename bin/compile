@@ -22,6 +22,7 @@ else
 fi
 curl -L $RACKET_URL | tar xzv
 RACKET_DIR=$CACHE_DIR/racket
+mkdir $RACKET_DIR
 cd racket-$RACKET_VERSION/src
 ./configure --prefix=$RACKET_DIR
 make install
