@@ -16,7 +16,7 @@ indent() {
 
 echo "-----> Building Racket Runtime Environment"
 INSTALLED_VERSION="V$(cat $2/version)"
-if [ ! $VERSION == $INSTALLED_VERSION ]; then
+if [ ! $VERSION = $INSTALLED_VERSION ]; then
 		rm -rvf $CACHE_DIR
 		mkdir $CACHE_DIR
 		curl -L $RACKET_URL | tar xzv
