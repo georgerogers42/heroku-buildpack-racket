@@ -3,7 +3,8 @@ set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-mkdir -p $CACHE_DIR
+mkdir -p $2
+touch $2/version
 RACKET_URL="http://mirror.racket-lang.org/installers/6.2.1/racket-6.2.1-src-builtpkgs.tgz"
 VERSION=4
 RACKET_VERSION=6.2.1
@@ -14,7 +15,6 @@ indent() {
 }
 
 echo "-----> Building Racket Runtime Environment"
-touch $CACHE_DIR/version
 INSTALLED_VERSION=3
 if [ ! $INSTALLED_VERSION -eq $VERSION ]; then
 		rm -rvf $CACHE_DIR
