@@ -7,7 +7,7 @@ mkdir -p $2
 touch $2/version
 RACKET_URL="http://mirror.racket-lang.org/installers/6.2.1/racket-6.2.1-src-builtpkgs.tgz"
 RACKET_VERSION=6.2.1
-VERSION="V$RACKET_VERSION"
+VERSION="$RACKET_VERSION 1"
 RACKET_DIR=$CACHE_DIR/racket
 
 indent() {
