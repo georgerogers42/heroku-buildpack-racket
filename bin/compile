@@ -30,5 +30,5 @@ fi
 
 echo "-----> Creating racket exe From heroku-setup.rkt"
 cd $BUILD_DIR
-$RACKET_DIR/bin/raco exe heroku-setup.rkt
-$RACKET_DIR/bin/raco distribute run heroku-setup
+$RACKET_DIR/bin/raco exe main.rkt
+$RACKET_DIR/bin/raco distribute run main
