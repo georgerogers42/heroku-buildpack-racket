@@ -16,19 +16,17 @@ indent() {
 
 echo "-----> Building Racket Runtime Environment"
 INSTALLED_VERSION="$(cat $2/version)"
-if [ ! $VERSION = $INSTALLED_VERSION ]; then
-		rm -rvf $CACHE_DIR
-		mkdir $CACHE_DIR
-		curl -L $RACKET_URL | tar xzv
-		mkdir $RACKET_DIR
-		cd racket-$RACKET_VERSION/src
-		./configure --prefix=$RACKET_DIR
-		make
-		make install
-		echo $RACKET_VERSION > $CACHE_DIR/version
-fi
+rm -rvf $CACHE_DIR
+mkdir $CACHE_DIR
+curl -L $RACKET_URL | tar xzv
+mkdir $RACKET_DIR
+cd racket-$RACKET_VERSION/src
+./configure --prefix=$RACKET_DIR
+make
+make install
+echo $RACKET_VERSION > $CACHE_DIR/version
 
-echo "-----> Creating racket exe From heroku-setup.rkt"
+echo "-----> Creating racket exe From main.rkt"
 cd $BUILD_DIR
 $RACKET_DIR/bin/raco exe main.rkt
 $RACKET_DIR/bin/raco distribute run main
