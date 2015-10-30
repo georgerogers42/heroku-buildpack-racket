@@ -5,7 +5,7 @@ OK=0
 FAIL=1
 
 # this pack is valid for apps with a heroku-setup.mkt in the root
-if [ -f $BUILD_DIR/main.rkt]; then
+if [ -f $BUILD_DIR/main.rkt ]; then
   echo "Racket Framework"
   exit $OK
 else
